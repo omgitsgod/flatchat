@@ -615,6 +615,7 @@ function displayMessage(message) {
     <p>${message.content}</p>
     <span class="time-left">${message.time_sent}</span>
   </div>`
+  chatBox.scrollTop = chatBox.scrollHeight
 }
 
 fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => json.forEach(message => displayMessage(message)))
