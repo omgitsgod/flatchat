@@ -610,14 +610,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 const chatBox = document.querySelector("#chat-box")
 
 function displayMessage(message) {
+  debugger
   chatBox.innerHTML += `<div class="container darker">
     <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
-    <p>${message}</p>
-    <span class="time-left">11:05</span>
+    <p>${message.content}</p>
+    <span class="time-left">${message.time_sent}</span>
   </div>`
 }
 
-fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => json.forEach(message => displayMessage(message.content)))
+fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => json.forEach(message => displayMessage(message)))
 
 
 
@@ -641,7 +642,6 @@ fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => 
 
     received: function(data) {
 
-      debugger
       displayMessage(data)
 
     },
