@@ -610,9 +610,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 const chatBox = document.querySelector("#chat-box")
 
 function displayMessage(message) {
-  debugger
   chatBox.innerHTML += `<div class="container darker">
-    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
+    <img id="avatar" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/999/s200/flatironschool.png" alt="Avatar" class="right">
     <p>${message.content}</p>
     <span class="time-left">${message.time_sent}</span>
   </div>`

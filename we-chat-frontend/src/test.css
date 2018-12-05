@@ -20,6 +20,25 @@
     display: table;
 }
 
+
+
+input#message {
+  margin: auto;
+  display: inline-block;
+  width: 50%;
+  height: 25px;
+  background-color: black;
+  color: white;
+}
+
+#chat-box {
+  margin: auto;
+  height: 600px;
+  width: 70%;
+  border: 5px solid rgb(5, 145, 176);
+  overflow-y: scroll;
+}
+
 /* Style images */
 .container img {
     float: left;

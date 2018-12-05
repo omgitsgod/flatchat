@@ -11,7 +11,7 @@ class GroupChannel < ApplicationCable::Channel
 
     if data["message"].length >= 1
       message = Message.create(content: data["message"])
-      ActionCable.server.broadcast('group_channel', {content: message.content, time_sent: message.format_time})
+      ActionCable.server.broadcast('group_channel', {content: message.content, time_sent: message.time_sent})
     end
   end
 end
