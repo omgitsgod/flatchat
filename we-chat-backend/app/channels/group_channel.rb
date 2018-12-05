@@ -9,8 +9,8 @@ class GroupChannel < ApplicationCable::Channel
 
   def speak(data)
     if data["message"].length >= 1
-  message = Message.create(content: data["message"])
-    ActionCable.server.broadcast 'group_channel', message.content
-  end
+      message = Message.create(content: data["message"])
+      ActionCable.server.broadcast 'group_channel', message.content
+    end
   end
 end
