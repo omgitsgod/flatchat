@@ -2,7 +2,7 @@
 .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
-    border-radius: 5px;
+    border-radius: 25px;
     padding: 10px;
     margin: 10px 0;
 }
@@ -23,7 +23,8 @@
 
 
 input#message {
-  width: 60%;
+  border-radius: 25px;
+  width: 55%;
   height: 25px;
   background-color: #1d1d1b;
   color: white;
@@ -38,10 +39,11 @@ body {
 }
 
 #chat-box {
+  border-radius: 25px;
   margin: auto;
   height: 600px;
   width: 60%;
-  border: 5px solid rgb(5, 145, 176);
+  
   overflow-y: scroll;
 }
 

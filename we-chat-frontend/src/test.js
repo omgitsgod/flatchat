@@ -610,7 +610,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 const chatBox = document.querySelector("#chat-box")
 
 do {
-  user = prompt("Enter your username")
+  user = prompt("Enter your username").toLowerCase()
 }
 while (user.length < 2)
 
