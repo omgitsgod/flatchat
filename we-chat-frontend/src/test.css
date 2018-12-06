@@ -5,6 +5,7 @@
     border-radius: 25px;
     padding: 10px;
     margin: 10px 0;
+    font-size: 20px;
 }
 
 /* Darker chat container */
@@ -25,13 +26,14 @@
 input#message {
   border-radius: 25px;
   width: 55%;
-  height: 25px;
+  height: 35px;
   background-color: #1d1d1b;
   color: white;
   display: block;
   margin-left: auto;
   margin-right: auto;
   font-weight: bolder;
+  font-size: 20px;
 }
 
 body {
