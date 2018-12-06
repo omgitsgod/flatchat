@@ -609,16 +609,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 const chatBox = document.querySelector("#chat-box")
 
+const user = prompt("Enter your username")
+
+
 function displayMessage(message) {
+  if (message.user === user){
   chatBox.innerHTML += `<div class="container darker">
-    <img id="avatar" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/999/s200/flatironschool.png" alt="Avatar" class="right">
-    <p>${message.content}</p>
+    <img id="avatar" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/999/s200/flatironschool.png" alt="Avatar" class="left">
+    <p>${message.user}: ${message.content}</p>
+    <span class="time-left">${message.time_sent}</span>
+  </div>`
+  chatBox.scrollTop = chatBox.scrollHeight
+} else {
+  chatBox.innerHTML += `<div class="container">
+    <img id="avatar" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/999/s200/flatironschool.png" alt="Avatar" class="left">
+    <p>${message.user}: ${message.content}</p>
     <span class="time-left">${message.time_sent}</span>
   </div>`
   chatBox.scrollTop = chatBox.scrollHeight
 }
+}
 
 fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => json.forEach(message => displayMessage(message)))
+
+
 
 
 
@@ -647,7 +661,7 @@ fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => 
     },
 
     speak: function(message) {
-      this.perform('speak', {message: message})
+      this.perform('speak', {user: user, message: message})
     }
 
   });

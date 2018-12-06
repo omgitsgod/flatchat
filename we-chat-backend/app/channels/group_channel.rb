@@ -8,10 +8,11 @@ class GroupChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-
     if data["message"].length >= 1
+      user = User.find_or_create_by(username: data["user"])
       message = Message.create(content: data["message"])
-      ActionCable.server.broadcast('group_channel', {content: message.content, time_sent: message.time_sent})
+      user.messages << message
+      ActionCable.server.broadcast('group_channel', {user: user.username, content: message.content, time_sent: message.time_sent})
     end
   end
 end
