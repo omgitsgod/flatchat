@@ -618,15 +618,15 @@ function displayMessage(message) {
   if (message.user === user){
   chatBox.innerHTML += `<div class="container darker">
     <img id="avatar" src="../src/flatironschoolblack.png" alt="Avatar" class="right">
-    <p class="message-right"><b>${message.user}:</b> ${message.content}</p>
-    <span class="time-right">${message.time_sent}</span>
+    <p class="right"><b>you:</b> ${message.content} </p>
+    <span class="time-left">${message.time_sent}</span>
   </div>`
   chatBox.scrollTop = chatBox.scrollHeight
 } else {
   chatBox.innerHTML += `<div class="container">
     <img id="avatar" src="../src/flatironschool.png">
     <p><b>${message.user}:</b> ${message.content}</p>
-    <span class="time-left">${message.time_sent}</span>
+    <span class="time-right">${message.time_sent}</span>
   </div>`
   chatBox.scrollTop = chatBox.scrollHeight
 }

@@ -25,7 +25,7 @@
 input#message {
   width: 60%;
   height: 25px;
-  background-color: black;
+  background-color: #1d1d1b;
   color: white;
   display: block;
   margin-left: auto;
@@ -47,7 +47,7 @@ body {
 
 .message-right {
   float: right;
-  display: block;
+
 }
 
 /* Style images */
@@ -68,7 +68,6 @@ body {
 
 /* Style time text */
 .time-right {
-  display: block;
     float: right;
     color: #aaa;
 }
