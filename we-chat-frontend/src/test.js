@@ -609,21 +609,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 const chatBox = document.querySelector("#chat-box")
 
-const user = prompt("Enter your username")
-
+do {
+  user = prompt("Enter your username")
+}
+while (user.length < 2)
 
 function displayMessage(message) {
   if (message.user === user){
   chatBox.innerHTML += `<div class="container darker">
-    <img id="avatar" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/999/s200/flatironschool.png" alt="Avatar" class="left">
-    <p>${message.user}: ${message.content}</p>
-    <span class="time-left">${message.time_sent}</span>
+    <img id="avatar" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/999/s200/flatironschool.png" alt="Avatar" class="right">
+    <p class="message-right"><b>${message.user}:</b> ${message.content}</p>
+    <span class="time-right">${message.time_sent}</span>
   </div>`
   chatBox.scrollTop = chatBox.scrollHeight
 } else {
   chatBox.innerHTML += `<div class="container">
     <img id="avatar" src="https://course_report_production.s3.amazonaws.com/rich/rich_files/rich_files/999/s200/flatironschool.png" alt="Avatar" class="left">
-    <p>${message.user}: ${message.content}</p>
+    <p><b>${message.user}:</b> ${message.content}</p>
     <span class="time-left">${message.time_sent}</span>
   </div>`
   chatBox.scrollTop = chatBox.scrollHeight
