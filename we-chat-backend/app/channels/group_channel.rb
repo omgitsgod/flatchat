@@ -1,7 +1,9 @@
 class GroupChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "group_channel"
+    stream_from 'group_channel'
     User.add
+    sleep 2
+    ActionCable.server.broadcast('group_channel', count: User.online, user: 'ROOM', content: 'WELCOME', time_sent: 'now')
   end
 
   def unsubscribed
@@ -10,11 +12,12 @@ class GroupChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    if data["message"].length >= 1
-      user = User.find_or_create_by(username: data["user"])
-      message = Message.create(content: data["message"])
+    if data['message'].length >= 1
+      user = User.find_or_create_by(username: data['user'])
+      message = Message.create(content: data['message'])
       user.messages << message
-      ActionCable.server.broadcast('group_channel', {count: User.online, user: user.username, content: message.content, time_sent: message.time_sent})
-    end
-  end
+      ActionCable.server.broadcast('group_channel', count: User.online, user: user.username, content: message.content, time_sent: message.time_sent)
+
+end
+end
 end

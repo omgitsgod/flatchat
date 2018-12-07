@@ -3,11 +3,11 @@ class User < ApplicationRecord
   @@online = 0
 
   def self.add
-    @@online +=1
+    @@online += 1
   end
 
   def self.nono
-  @@online -=1
+    @@online -= 1
   end
 
   def self.online
