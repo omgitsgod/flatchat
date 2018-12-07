@@ -1,10 +1,12 @@
 class GroupChannel < ApplicationCable::Channel
   def subscribed
     stream_from "group_channel"
+    User.add
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    User.nono
   end
 
   def speak(data)
@@ -12,7 +14,7 @@ class GroupChannel < ApplicationCable::Channel
       user = User.find_or_create_by(username: data["user"])
       message = Message.create(content: data["message"])
       user.messages << message
-      ActionCable.server.broadcast('group_channel', {user: user.username, content: message.content, time_sent: message.time_sent})
+      ActionCable.server.broadcast('group_channel', {count: User.online, user: user.username, content: message.content, time_sent: message.time_sent})
     end
   end
 end

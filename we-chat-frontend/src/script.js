@@ -608,11 +608,15 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
 const chatBox = document.querySelector("#chat-box")
+const userBox = document.querySelector("#user-box")
 
 do {
   user = prompt("Welcome to flatChat! \nEnter your username to get started").toLowerCase()
 }
 while (user.length < 2)
+
+document.querySelector('#user-name').innerText = user
+
 
 function displayMessage(message) {
   if (message.user === user){
@@ -649,7 +653,6 @@ fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => 
   App.group = App.cable.subscriptions.create('GroupChannel', {
     // normal channel code goes here...
     connected: function() {
-
     },
 
     disconnect: function() {
@@ -657,9 +660,8 @@ fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => 
     },
 
     received: function(data) {
-
       displayMessage(data)
-
+      document.querySelector("#user-list").innerHTML = `<li>${data["count"]}</li>`
     },
 
     speak: function(message) {
