@@ -673,6 +673,7 @@
       fetch("http://localhost:3000/api/v1/messages").then(r => r.json()).then(json => json.forEach(message => displayMessage(message)))
 
 
+
       do {
         user = prompt("Welcome to flatChat! \nEnter your username to get started").toLowerCase()
       }
@@ -723,10 +724,10 @@
         messageForm.reset()
         App.group.speak(messageInput)
 
-
       })
 
     })
+
 
   }, {
     "actioncable": 1
