@@ -2,8 +2,7 @@ class GroupChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'group_channel'
     User.add
-    sleep 2
-    ActionCable.server.broadcast('group_channel', count: User.online, user: 'ROOM', content: 'WELCOME', time_sent: 'now')
+    ActionCable.server.broadcast('group_channel', type: "update count", count: User.online)
   end
 
   def unsubscribed

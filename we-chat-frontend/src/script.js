@@ -650,7 +650,7 @@
       const chatBox = document.querySelector("#chat-box")
       const userBox = document.querySelector("#user-box")
 
-    
+
 
       function displayMessage(message) {
         if (message.user === user) {
@@ -698,10 +698,12 @@
         },
 
         received: function(data) {
-          debugger
-          displayMessage(data)
-          document.querySelector("#user-list").innerHTML = `<li>${data["count"]}</li>`
-
+          if (data["type"] === "update count") {
+            document.querySelector("#user-list").innerHTML = `<li>${data["count"]}</li>`
+          } else {
+            displayMessage(data)
+            document.querySelector("#user-list").innerHTML = `<li>${data["count"]}</li>`
+          }
         },
 
         speak: function(message) {
